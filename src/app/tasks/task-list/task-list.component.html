@@ -1,0 +1,27 @@
+<h2>Tarefa</h2>
+<hr />
+
+<button type="button" class="btn btn-primary mb-2" [routerLink]="['/new']">
+  Nova tarefa
+</button>
+
+<section>
+
+  <div *ngIf="tasks.length == 0" class="alert alert-warning" role="alert">
+    Nenhuma tarefa foi cadastrada ainda.
+  </div>
+
+  <ul class="list-group" *ngIf="tasks.length > 0">
+
+    <li class="list-group-item" *ngFor="let task of tasks">
+      <app-tasks-list-item [task]="task" class="task-item" (onDeleteTask)="onTaskDeleted($event)"></app-tasks-list-item>
+    </li>
+
+  </ul>
+
+</section>
+
+<!--Acima, o task da esquerda é o task do input do atribudo do arq.ts
+      O da direito é a variável do ngFor-->
+
+<!--No ngIf, a div só será mostrada se a condição dentro do if for verdadeira-->
